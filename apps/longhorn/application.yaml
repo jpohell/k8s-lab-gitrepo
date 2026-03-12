@@ -5,10 +5,6 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: longhorn-system
-    createNamespace: true
   source:
     repoURL: https://charts.longhorn.io
     chart: longhorn
@@ -16,7 +12,12 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: longhorn-system
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

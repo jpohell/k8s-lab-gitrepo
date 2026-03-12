@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1beta1
+apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: root-apps
@@ -6,24 +6,19 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/<your-username>/gitops.git
+        repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
         revision: main
         directories:
-          - path: apps/**/*
+          - path: apps/*/*
   template:
     metadata:
       name: '{{path.basename}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/<your-username>/gitops.git
+        repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
         targetRevision: main
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path.basename}}'
-        createNamespace: true
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
