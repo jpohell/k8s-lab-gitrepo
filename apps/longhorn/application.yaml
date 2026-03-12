@@ -8,6 +8,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
+    createNamespace: true
   source:
     repoURL: https://charts.longhorn.io
     chart: longhorn
