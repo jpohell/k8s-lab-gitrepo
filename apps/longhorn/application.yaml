@@ -6,9 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-username>/<your-repo>.git
+    repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
     targetRevision: main
-    path: gitops/apps/longhorn
+    path: apps/longhorn
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
