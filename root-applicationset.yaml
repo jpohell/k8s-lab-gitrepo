@@ -10,6 +10,7 @@ spec:
         revision: main
         directories:
           - path: apps/*/*
+          - path: apps/*
   template:
     metadata:
       name: '{{path.basename}}'
