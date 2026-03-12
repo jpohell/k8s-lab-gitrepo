@@ -6,11 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
-    targetRevision: main
-    path: apps/harbor
+    repoURL: https://helm.goharbor.io
+    chart: harbor
+    targetRevision: 1.14.0
     helm:
-      valueFiles: []
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: harbor
