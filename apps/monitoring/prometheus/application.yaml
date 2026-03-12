@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
     targetRevision: main
-    path: apps/prometheus
+    path: apps/monitoring/prometheus
     helm:
       releaseName: kube-prometheus-stack
       chart: kube-prometheus-stack
