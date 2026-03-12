@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jpohell/k8s-lab-gitrepo.git
+    targetRevision: main
+    path: apps/prometheus
+    helm:
+      releaseName: kube-prometheus-stack
+      chart: kube-prometheus-stack
+      repoURL: https://prometheus-community.github.io/helm-charts
+      version: 65.0.0
+      valueFiles:
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
