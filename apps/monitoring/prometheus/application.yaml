@@ -8,6 +8,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
+    createNamespace: true
   source:
     repoURL: https://prometheus-community.github.io/helm-charts
     chart: kube-prometheus-stack
