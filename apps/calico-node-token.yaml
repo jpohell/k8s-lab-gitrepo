@@ -1,0 +1,12 @@
+
+apiVersion: v1
+data:
+  extra: aWdub3JlZA==
+kind: Secret
+metadata:
+  name: calico-node-token
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: calico-node
+    kubernetes.io/service-account.uid: "a4a77d9d-d121-4e2f-a543-b726ee3889e1"
+type: kubernetes.io/service-account-token
